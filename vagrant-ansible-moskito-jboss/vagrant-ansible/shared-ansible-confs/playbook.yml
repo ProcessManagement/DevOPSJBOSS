@@ -1,0 +1,36 @@
+---
+# This playbook deploys the whole application stack.
+
+# Apply common configuration to all hosts
+- hosts: all
+  roles:
+  - common
+
+# Configure and deploy database servers.
+- hosts: dbservers
+
+  roles:
+  - db
+
+# Configure and deploy the web servers. Note that we include two roles
+# here, the 'jboss' role which simply sets up Jboss, and 'app'
+# which includes our web applications.
+
+- hosts: webservers
+
+  roles:
+  - jboss
+  - app
+
+# Configure and deploy the load balancer(s).
+#- hosts: lbservers
+
+#  roles:
+#  - haproxy
+
+# Configure and deploy the Nagios monitoring node(s).
+#- hosts: monitoring
+
+#  roles:
+#  - base-apache
+#  - nagios

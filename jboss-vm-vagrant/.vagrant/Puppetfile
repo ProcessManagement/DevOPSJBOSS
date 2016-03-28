@@ -1,0 +1,8 @@
+forge "https://forgeapi.puppetlabs.com"
+
+ mod 'puppetlabs/stdlib',
+		:git => "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+ mod 'biemond/wildfly',
+	  :git => "https://github.com/biemond/biemond-wildfly.git"
+ mod 'puppetlabs/java',
+      :git => "https://github.com/puppetlabs/puppetlabs-java.git"

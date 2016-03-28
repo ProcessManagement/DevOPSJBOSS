@@ -1,0 +1,7 @@
+name 'starter'
+description 'A basic starter cookbook'
+version '1.0.0'
+maintainer 'Awesome Company, Inc.'
+maintainer_email 'you@example.com'
+ruby depends 'mysql', '~> 6.0' 
+#mysql depends 'yum-mysql-community' version '>= 0.0.0', 'smf' version '>= 0.0.0'

@@ -1,0 +1,260 @@
+127.0.0.1      -----> Existing Chef installation detected
+127.0.0.1      Starting the first Chef Client run...
+127.0.0.1      Starting Chef Client, version 12.6.0[0m
+127.0.0.1      resolving cookbooks for run list: ["apt", "apt-zip", "mysql"][0m
+127.0.0.1      Synchronizing Cookbooks:[0m
+127.0.0.1        - apt (2.9.2)[0m
+127.0.0.1        - apt-zip (0.1.0)[0m
+127.0.0.1        - mysql (0.1.0)[0m
+127.0.0.1      Compiling Cookbooks...[0m
+127.0.0.1      [2016-01-31T19:29:09+00:00] WARN: Cloning resource attributes for execute[apt-get update] from prior resource (CHEF-3694)
+127.0.0.1      [2016-01-31T19:29:09+00:00] WARN: Previous execute[apt-get update]: /var/chef/cache/cookbooks/apt/recipes/default.rb:62:in `from_file'
+127.0.0.1      [2016-01-31T19:29:09+00:00] WARN: Current  execute[apt-get update]: /var/chef/cache/cookbooks/apt-zip/recipes/default.rb:9:in `from_file'
+127.0.0.1      Converging 17 resources[0m
+127.0.0.1      Recipe: apt::default[0m
+127.0.0.1        * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to action :nothing)
+127.0.0.1        * directory[/etc/apt/apt.conf.d] action create (up to date)
+127.0.0.1        * cookbook_file[/etc/apt/apt.conf.d/15update-stamp] action create
+127.0.0.1          [32m- create new file /etc/apt/apt.conf.d/15update-stamp[0m
+127.0.0.1          [32m- update content in file /etc/apt/apt.conf.d/15update-stamp from none to 174cdb[0m
+127.0.0.1          [37m--- /etc/apt/apt.conf.d/15update-stamp	2016-01-31 19:29:09.105135514 +0000[0m
+127.0.0.1          [37m+++ /etc/apt/apt.conf.d/.15update-stamp20160131-1405-bijgnw	2016-01-31 19:29:09.105135514 +0000[0m
+127.0.0.1          [37m@@ -1 +1,2 @@[0m
+127.0.0.1          [37m+APT::Update::Post-Invoke-Success {"touch /var/lib/apt/periodic/update-success-stamp 2>/dev/null || true";};[0m
+127.0.0.1      [0m  * execute[apt-get update] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoremove] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoclean] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get-update-periodic] action run
+127.0.0.1          [32m- execute apt-get update[0m
+127.0.0.1      [0m  * file[/var/lib/apt/periodic/update-success-stamp] action touch
+127.0.0.1          [32m- update utime on file /var/lib/apt/periodic/update-success-stamp[0m
+127.0.0.1      [0m  * directory[/var/cache/local] action create
+127.0.0.1          [32m- create new directory /var/cache/local[0m
+127.0.0.1          [32m- change mode from '' to '0755'[0m
+127.0.0.1          [32m- change owner from '' to 'root'[0m
+127.0.0.1          [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m  * directory[/var/cache/local/preseeding] action create
+127.0.0.1          [32m- create new directory /var/cache/local/preseeding[0m
+127.0.0.1          [32m- change mode from '' to '0755'[0m
+127.0.0.1          [32m- change owner from '' to 'root'[0m
+127.0.0.1          [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m  * template[/etc/apt/apt.conf.d/10recommends] action create
+127.0.0.1          [32m- create new file /etc/apt/apt.conf.d/10recommends[0m
+127.0.0.1          [32m- update content in file /etc/apt/apt.conf.d/10recommends from none to f41e1d[0m
+127.0.0.1          [37m--- /etc/apt/apt.conf.d/10recommends	2016-01-31 19:29:40.416784918 +0000[0m
+127.0.0.1          [37m+++ /etc/apt/apt.conf.d/.10recommends20160131-1405-1ckaxf7	2016-01-31 19:29:40.416784918 +0000[0m
+127.0.0.1          [37m@@ -1 +1,4 @@[0m
+127.0.0.1          [37m+# Managed by Chef[0m
+127.0.0.1          [37m+APT::Install-Recommends "1";[0m
+127.0.0.1          [37m+APT::Install-Suggests "0";[0m
+127.0.0.1          [32m- change mode from '' to '0644'[0m
+127.0.0.1          [32m- change owner from '' to 'root'[0m
+127.0.0.1          [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m  * apt_package[apt-transport-https] action install (up to date)
+127.0.0.1      Recipe: apt-zip::default[0m
+127.0.0.1        * execute[apt-get update] action run
+127.0.0.1          [32m- execute apt-get update -y[0m
+127.0.0.1      [0mRecipe: apt::default[0m
+127.0.0.1        * file[/var/lib/apt/periodic/update-success-stamp] action touch
+127.0.0.1          [32m- update utime on file /var/lib/apt/periodic/update-success-stamp[0m
+127.0.0.1      [0mRecipe: apt-zip::default[0m
+127.0.0.1        * execute[apt-get zip] action run
+127.0.0.1          [32m- execute apt-get install unzip -y[0m
+127.0.0.1      [0mRecipe: mysql::default[0m
+127.0.0.1        * mysql_service[MySqlGBDS] action create
+127.0.0.1          * apt_package[MySqlGBDS :create mysql-server-5.5] action install
+127.0.0.1            [32m- install version 5.5.47-0ubuntu0.14.04.1 of package mysql-server-5.5[0m
+127.0.0.1      [0m    * service[MySqlGBDS :create mysql] action stop
+127.0.0.1            [32m- stop service service[MySqlGBDS :create mysql][0m
+127.0.0.1      [0m    * service[MySqlGBDS :create mysql] action disable
+127.0.0.1            [32m- disable service service[MySqlGBDS :create mysql][0m
+127.0.0.1      [0m    * apt_package[MySqlGBDS :create apparmor] action install (up to date)
+127.0.0.1          * directory[MySqlGBDS :create /etc/apparmor.d/local/mysql] action create
+127.0.0.1            [32m- create new directory /etc/apparmor.d/local/mysql[0m
+127.0.0.1            [32m- change mode from '' to '0755'[0m
+127.0.0.1            [32m- change owner from '' to 'root'[0m
+127.0.0.1            [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m    * template[MySqlGBDS :create /etc/apparmor.d/local/usr.sbin.mysqld] action create
+127.0.0.1            [32m- update content in file /etc/apparmor.d/local/usr.sbin.mysqld from 196444 to 06cb51[0m
+127.0.0.1            [37m--- /etc/apparmor.d/local/usr.sbin.mysqld	2016-01-31 19:31:16.580847233 +0000[0m
+127.0.0.1            [37m+++ /etc/apparmor.d/local/.usr.sbin.mysqld20160131-1405-22m878	2016-01-31 19:31:26.773941690 +0000[0m
+127.0.0.1            [37m@@ -1,3 +1,2 @@[0m
+127.0.0.1            [37m-# Site-specific additions and overrides for usr.sbin.mysqld.[0m
+127.0.0.1            [37m-# For more details, please see /etc/apparmor.d/local/README.[0m
+127.0.0.1            [37m+#include <local/mysql>[0m
+127.0.0.1      [0m    * service[MySqlGBDS :create apparmor] action restart
+127.0.0.1            [32m- restart service service[MySqlGBDS :create apparmor][0m
+127.0.0.1      [0m    * template[MySqlGBDS :create /etc/apparmor.d/usr.sbin.mysqld] action create (up to date)
+127.0.0.1          * template[MySqlGBDS :create /etc/apparmor.d/local/mysql/MySqlGBDS] action create
+127.0.0.1            [32m- create new file /etc/apparmor.d/local/mysql/MySqlGBDS[0m
+127.0.0.1            [32m- update content in file /etc/apparmor.d/local/mysql/MySqlGBDS from none to c48dee[0m
+127.0.0.1            [37m--- /etc/apparmor.d/local/mysql/MySqlGBDS	2016-01-31 19:31:28.959033788 +0000[0m
+127.0.0.1            [37m+++ /etc/apparmor.d/local/mysql/.MySqlGBDS20160131-1405-1dymuc0	2016-01-31 19:31:28.959033788 +0000[0m
+127.0.0.1            [37m@@ -1 +1,14 @@[0m
+127.0.0.1            [37m+/etc/mysql-MySqlGBDS/*.pem r,[0m
+127.0.0.1            [37m+/etc/mysql-MySqlGBDS/conf.d/ r,[0m
+127.0.0.1            [37m+/etc/mysql-MySqlGBDS/conf.d/* r,[0m
+127.0.0.1            [37m+/etc/mysql-MySqlGBDS/my.cnf r,[0m
+127.0.0.1            [37m+/var/log/mysql-MySqlGBDS/ r,[0m
+127.0.0.1            [37m+/var/log/mysql-MySqlGBDS/* rw,[0m
+127.0.0.1            [37m+/var/lib/mysql-MySqlGBDS/ r,[0m
+127.0.0.1            [37m+/var/lib/mysql-MySqlGBDS/** rwk,[0m
+127.0.0.1            [37m+/run/mysql-MySqlGBDS/** rw,[0m
+127.0.0.1            [37m+/run/mysql-MySqlGBDS/mysqld.pid rw,[0m
+127.0.0.1            [37m+/run/mysql-MySqlGBDS/mysqld.sock rw,[0m
+127.0.0.1            [37m+/tmp/mysql-MySqlGBDS/ r,[0m
+127.0.0.1            [37m+/tmp/mysql-MySqlGBDS/my.sql r,[0m
+127.0.0.1            [32m- change mode from '' to '0644'[0m
+127.0.0.1            [32m- change owner from '' to 'root'[0m
+127.0.0.1            [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m    * service[MySqlGBDS :create apparmor] action restart
+127.0.0.1            [32m- restart service service[MySqlGBDS :create apparmor][0m
+127.0.0.1      [0m    * service[MySqlGBDS :create apparmor] action nothing (skipped due to action :nothing)
+127.0.0.1          * group[MySqlGBDS :create mysql] action create (up to date)
+127.0.0.1          * user[MySqlGBDS :create mysql] action create (up to date)
+127.0.0.1          * file[MySqlGBDS :create /etc/mysql/my.cnf] action delete
+127.0.0.1            [32m- delete file /etc/mysql/my.cnf[0m
+127.0.0.1      [0m    * file[MySqlGBDS :create /etc/my.cnf] action delete (up to date)
+127.0.0.1          * link[MySqlGBDS :create /usr/share/my-default.cnf] action create
+127.0.0.1            [32m- create symlink at /usr/share/my-default.cnf to /etc/mysql-MySqlGBDS/my.cnf[0m
+127.0.0.1      [0m    * directory[MySqlGBDS :create /etc/mysql-MySqlGBDS] action create
+127.0.0.1            [32m- create new directory /etc/mysql-MySqlGBDS[0m
+127.0.0.1            [32m- change mode from '' to '0750'[0m
+127.0.0.1            [32m- change owner from '' to 'mysql'[0m
+127.0.0.1            [32m- change group from '' to 'mysql'[0m
+127.0.0.1      [0m    * directory[MySqlGBDS :create /etc/mysql-MySqlGBDS/conf.d] action create
+127.0.0.1            [32m- create new directory /etc/mysql-MySqlGBDS/conf.d[0m
+127.0.0.1            [32m- change mode from '' to '0750'[0m
+127.0.0.1            [32m- change owner from '' to 'mysql'[0m
+127.0.0.1            [32m- change group from '' to 'mysql'[0m
+127.0.0.1      [0m    * directory[MySqlGBDS :create /run/mysql-MySqlGBDS] action create
+127.0.0.1            [32m- create new directory /run/mysql-MySqlGBDS[0m
+127.0.0.1            [32m- change mode from '' to '0755'[0m
+127.0.0.1            [32m- change owner from '' to 'mysql'[0m
+127.0.0.1            [32m- change group from '' to 'mysql'[0m
+127.0.0.1      [0m    * directory[MySqlGBDS :create /var/log/mysql-MySqlGBDS] action create
+127.0.0.1            [32m- create new directory /var/log/mysql-MySqlGBDS[0m
+127.0.0.1            [32m- change mode from '' to '0750'[0m
+127.0.0.1            [32m- change owner from '' to 'mysql'[0m
+127.0.0.1            [32m- change group from '' to 'mysql'[0m
+127.0.0.1      [0m    * directory[MySqlGBDS :create /var/lib/mysql-MySqlGBDS] action create
+127.0.0.1            [32m- create new directory /var/lib/mysql-MySqlGBDS[0m
+127.0.0.1            [32m- change mode from '' to '0750'[0m
+127.0.0.1            [32m- change owner from '' to 'mysql'[0m
+127.0.0.1            [32m- change group from '' to 'mysql'[0m
+127.0.0.1      [0m    * template[MySqlGBDS :create /etc/mysql-MySqlGBDS/my.cnf] action create
+127.0.0.1            [32m- create new file /etc/mysql-MySqlGBDS/my.cnf[0m
+127.0.0.1            [32m- update content in file /etc/mysql-MySqlGBDS/my.cnf from none to 6188b3[0m
+127.0.0.1            [37m--- /etc/mysql-MySqlGBDS/my.cnf	2016-01-31 19:31:30.667887866 +0000[0m
+127.0.0.1            [37m+++ /etc/mysql-MySqlGBDS/.my.cnf20160131-1405-1793j4m	2016-01-31 19:31:30.667887866 +0000[0m
+127.0.0.1            [37m@@ -1 +1,23 @@[0m
+127.0.0.1            [37m+# Chef generated my.cnf for instance mysql-MySqlGBDS[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+[client][0m
+127.0.0.1            [37m+default-character-set          = utf8[0m
+127.0.0.1            [37m+port                           = 3306[0m
+127.0.0.1            [37m+socket                         = /run/mysql-MySqlGBDS/mysqld.sock[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+[mysql][0m
+127.0.0.1            [37m+default-character-set          = utf8[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+[mysqld][0m
+127.0.0.1            [37m+user                           = mysql[0m
+127.0.0.1            [37m+pid-file                       = /run/mysql-MySqlGBDS/mysqld.pid[0m
+127.0.0.1            [37m+socket                         = /run/mysql-MySqlGBDS/mysqld.sock[0m
+127.0.0.1            [37m+port                           = 3306[0m
+127.0.0.1            [37m+datadir                        = /var/lib/mysql-MySqlGBDS[0m
+127.0.0.1            [37m+tmpdir                         = /tmp[0m
+127.0.0.1            [37m+log-error                      = /var/log/mysql-MySqlGBDS/error.log[0m
+127.0.0.1            [37m+!includedir /etc/mysql-MySqlGBDS/conf.d[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+[mysqld_safe][0m
+127.0.0.1            [37m+socket                         = /run/mysql-MySqlGBDS/mysqld.sock[0m
+127.0.0.1            [32m- change mode from '' to '0600'[0m
+127.0.0.1            [32m- change owner from '' to 'mysql'[0m
+127.0.0.1            [32m- change group from '' to 'mysql'[0m
+127.0.0.1      [0m    * bash[MySqlGBDS :create initial records] action run
+127.0.0.1            [32m- execute "bash"  "/tmp/chef-script20160131-1405-1ay81h8"[0m
+127.0.0.1      [0m  
+127.0.0.1      [0m  * mysql_service[MySqlGBDS] action start
+127.0.0.1          * template[MySqlGBDS :start /usr/sbin/mysql-MySqlGBDS-wait-ready] action create
+127.0.0.1            [32m- create new file /usr/sbin/mysql-MySqlGBDS-wait-ready[0m
+127.0.0.1            [32m- update content in file /usr/sbin/mysql-MySqlGBDS-wait-ready from none to 26aeb3[0m
+127.0.0.1            [37m--- /usr/sbin/mysql-MySqlGBDS-wait-ready	2016-01-31 19:31:34.377742030 +0000[0m
+127.0.0.1            [37m+++ /usr/sbin/.mysql-MySqlGBDS-wait-ready20160131-1405-1m3t6ml	2016-01-31 19:31:34.377742030 +0000[0m
+127.0.0.1            [37m@@ -1 +1,23 @@[0m
+127.0.0.1            [37m+#!/bin/sh[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+# Wait for the server to come up[0m
+127.0.0.1            [37m+ret=0[0m
+127.0.0.1            [37m+while /bin/true; do[0m
+127.0.0.1            [37m+        RESPONSE=`/usr/bin/mysqladmin --no-defaults --socket="/run/mysql-MySqlGBDS/mysqld.sock" --user=UNKNOWN_MYSQL_USER ping 2>&1`[0m
+127.0.0.1            [37m+        mret=$?[0m
+127.0.0.1            [37m+        if [ $mret -eq 0 ]; then[0m
+127.0.0.1            [37m+            break[0m
+127.0.0.1            [37m+        fi[0m
+127.0.0.1            [37m+        # exit codes 1, 11 (EXIT_CANNOT_CONNECT_TO_SERVICE) are expected,[0m
+127.0.0.1            [37m+        # anything else suggests a configuration error[0m
+127.0.0.1            [37m+        if [ $mret -ne 1 -a $mret -ne 11 ]; then[0m
+127.0.0.1            [37m+            ret=1[0m
+127.0.0.1            [37m+            break[0m
+127.0.0.1            [37m+        fi[0m
+127.0.0.1            [37m+        # "Access denied" also means the server is alive[0m
+127.0.0.1            [37m+        echo "$RESPONSE" | grep -q "Access denied for user" && break[0m
+127.0.0.1            [37m+        sleep 1[0m
+127.0.0.1            [37m+done[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+exit $ret[0m
+127.0.0.1            [32m- change mode from '' to '0755'[0m
+127.0.0.1            [32m- change owner from '' to 'root'[0m
+127.0.0.1            [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m    * template[MySqlGBDS :start /etc/init/mysql-MySqlGBDS.conf] action create
+127.0.0.1            [32m- create new file /etc/init/mysql-MySqlGBDS.conf[0m
+127.0.0.1            [32m- update content in file /etc/init/mysql-MySqlGBDS.conf from none to 739427[0m
+127.0.0.1            [37m--- /etc/init/mysql-MySqlGBDS.conf	2016-01-31 19:31:34.429768034 +0000[0m
+127.0.0.1            [37m+++ /etc/init/.mysql-MySqlGBDS.conf20160131-1405-qpjcbp	2016-01-31 19:31:34.429768034 +0000[0m
+127.0.0.1            [37m@@ -1 +1,27 @@[0m
+127.0.0.1            [37m+# mysql-MySqlGBDS Service[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+description     "MySQL service mysql-MySqlGBDS"[0m
+127.0.0.1            [37m+author          "chef-client"[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+start on runlevel [2345][0m
+127.0.0.1            [37m+stop on starting rc RUNLEVEL=[016][0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+respawn[0m
+127.0.0.1            [37m+respawn limit 2 5[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+env HOME=/etc/mysql-MySqlGBDS[0m
+127.0.0.1            [37m+umask 007[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+kill timeout 300[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+pre-start script[0m
+127.0.0.1            [37m+[ -d /run/mysql-MySqlGBDS ] || install -m 755 -o mysql -g mysql -d /run/mysql-MySqlGBDS[0m
+127.0.0.1            [37m+[ -d /run/mysql-MySqlGBDS ] || install -m 755 -o mysql -g mysql -d /run/mysql-MySqlGBDS[0m
+127.0.0.1            [37m+end script[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+exec /usr/sbin/mysqld --defaults-file=/etc/mysql-MySqlGBDS/my.cnf[0m
+127.0.0.1            [37m+[0m
+127.0.0.1            [37m+post-start script[0m
+127.0.0.1            [37m+/usr/sbin/mysql-MySqlGBDS-wait-ready[0m
+127.0.0.1            [37m+end script[0m
+127.0.0.1            [32m- change mode from '' to '0644'[0m
+127.0.0.1            [32m- change owner from '' to 'root'[0m
+127.0.0.1            [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m    * service[MySqlGBDS :start mysql-MySqlGBDS] action start
+127.0.0.1            [32m- start service service[MySqlGBDS :start mysql-MySqlGBDS][0m
+127.0.0.1      [0m  
+127.0.0.1      [0m  * remote_file[/tmp/some_archive.zip] action create
+127.0.0.1          [32m- create new file /tmp/some_archive.zip[0m
+127.0.0.1          [32m- update content in file /tmp/some_archive.zip from none to fb578c[0m
+127.0.0.1          [37m(new content is binary, diff output suppressed)[0m
+127.0.0.1      [0m  * execute[unzip-file] action run
+127.0.0.1          [32m- execute unzip -n /tmp/some_archive.zip -d /tmp[0m
+127.0.0.1      [0m  * execute[import_database] action run
+127.0.0.1          [32m- execute mysql -S /var/run/mysql-MySqlGBDS/mysqld.sock -uroot -pchange-me < /tmp/guestbookapp/guestbookmysqldump.sql[0m
+127.0.0.1      [0m[0m
+127.0.0.1      Running handlers:[0m
+127.0.0.1      Running handlers complete
+127.0.0.1      [0mChef Client finished, 34/46 resources updated in 02 minutes 42 seconds[0m

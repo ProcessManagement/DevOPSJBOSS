@@ -1,0 +1,8 @@
+---
+:backends: yaml
+:yaml:
+  :datadir: /vagrant/files
+:hierarchy: 
+    - common
+    - jboss-config
+:logger: console

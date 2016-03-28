@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"D:/VM/jboss/jboss-vm-vagrant","disabled":false},"/tmp/vagrant-puppet/manifests-0513228b662f2e244a0d17394961da63":{"owner":"root","nfs__quiet":true,"guestpath":"/tmp/vagrant-puppet/manifests-0513228b662f2e244a0d17394961da63","hostpath":"D:/VM/jboss/jboss-vm-vagrant/.vagrant/manifests","disabled":false}}}

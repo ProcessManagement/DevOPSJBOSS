@@ -1,0 +1,55 @@
+---
+# tasks file for jboss
+
+---
+- name: Create JBoss user
+  user: name=jboss shell=/bin/bash comment="JBoss Server User"
+  sudo: yes
+
+- name: Create jboss share directory
+  file: path=/usr/local/share/jboss state=directory owner=jboss group=jboss
+  sudo: yes
+
+- name: Check if current version is installed
+  command: /bin/false creates="/usr/local/share/jboss/{{jboss_version_long}}"
+  ignore_errors: yes
+  sudo: yes
+  register: check_current_version
+
+- name: Create JBoss home directory
+  file: path="/usr/local/share/jboss" state=directory owner=jboss group=jboss
+  sudo: yes
+  when: check_current_version|failed
+
+- name: Get JBoss
+  get_url: url="{{jboss_url}}" dest="{{ansible_env.HOME}}/{{jboss_name_complete}}.tar.gz"
+  when: check_current_version|failed
+
+- name: Unarchive JBoss
+  command: /bin/tar zxvf {{jboss_name_complete}}.tar.gz chdir={{ansible_env.HOME}} creates={{ansible_env.HOME}}/{{jboss_name_complete}}
+  when: check_current_version|failed
+
+- name: Move JBoss to final location
+  command: /bin/mv -f {{ansible_env.HOME}}/{{jboss_name_complete}} /usr/local/share/jboss/{{jboss_version_long}} creates=/usr/local/share/jboss/{{jboss_version_long}}
+  register: move_jboss
+  sudo: yes
+  when: check_current_version|failed
+
+- name: Update JBoss home directory so jboss user owns file
+  file: path="/usr/local/share/jboss/{{jboss_version_long}}" state=directory owner=jboss group=jboss recurse=yes
+  sudo: yes
+  when: move_jboss|success and check_current_version|failed
+
+- name: Update current JBoss sym-link
+  file: src="/usr/local/share/jboss/{{jboss_version_long}}" dest=/usr/local/share/jboss/current owner=jboss group=jboss state=link
+  sudo: yes
+  notify: Restart JBoss
+
+- name: Upload JBoss service script
+  copy: src="jboss.init.d" dest="/etc/init.d/jboss" owner=root group=root mode=0755
+  sudo: yes
+  notify: Restart JBoss
+
+- name: Remove JBoss download
+  file: path="{{ansible_env.HOME}}/{{jboss_name_complete}}.tar.gz" state=absent
+

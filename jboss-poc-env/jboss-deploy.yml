@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: vagrant
+  vars:
+    jboss_home: "/opt/jboss/jboss-eap-6.3"
+  tasks:
+    - name: verify JBoss is running
+      service: name=jboss state=started
+      sudo: yes
+
+    - name: copy deployment
+      synchronize: src="deploy" dest="{{ jboss_home }}/standalone/deployments"
+        delete=yes

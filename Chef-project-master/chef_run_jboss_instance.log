@@ -1,0 +1,235 @@
+127.0.0.1      -----> Existing Chef installation detected
+127.0.0.1      Starting the first Chef Client run...
+127.0.0.1      Starting Chef Client, version 12.6.0[0m
+127.0.0.1      resolving cookbooks for run list: ["apt", "jboss6", "xml_guestbookapp"][0m
+127.0.0.1      Synchronizing Cookbooks:[0m
+127.0.0.1        - apt (2.9.2)[0m
+127.0.0.1        - jboss6 (0.1.0)[0m
+127.0.0.1        - java (1.39.0)[0m
+127.0.0.1        - xml_guestbookapp (0.1.0)[0m
+127.0.0.1      Compiling Cookbooks...[0m
+127.0.0.1      Converging 28 resources[0m
+127.0.0.1      Recipe: apt::default[0m
+127.0.0.1        * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to action :nothing)
+127.0.0.1        * directory[/etc/apt/apt.conf.d] action create (up to date)
+127.0.0.1        * cookbook_file[/etc/apt/apt.conf.d/15update-stamp] action create (up to date)
+127.0.0.1        * execute[apt-get update] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoremove] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get autoclean] action nothing (skipped due to action :nothing)
+127.0.0.1        * execute[apt-get-update-periodic] action run (skipped due to not_if)
+127.0.0.1        * directory[/var/cache/local] action create (up to date)
+127.0.0.1        * directory[/var/cache/local/preseeding] action create (up to date)
+127.0.0.1        * template[/etc/apt/apt.conf.d/10recommends] action create (up to date)
+127.0.0.1        * apt_package[apt-transport-https] action install (up to date)
+127.0.0.1      Recipe: java::openjdk[0m
+127.0.0.1        * apt_repository[openjdk-r-ppa] action add
+127.0.0.1          * file[/var/lib/apt/periodic/update-success-stamp] action nothing (skipped due to action :nothing)
+127.0.0.1          * execute[apt-cache gencaches] action nothing (skipped due to action :nothing)
+127.0.0.1          * execute[apt-get update] action nothing (skipped due to action :nothing)
+127.0.0.1          * execute[install-key DA1A4A13543B466853BAF164EB9B1D8886F44E2A] action run
+127.0.0.1            [32m- execute apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv DA1A4A13543B466853BAF164EB9B1D8886F44E2A[0m
+127.0.0.1      [0m    * ruby_block[validate-key DA1A4A13543B466853BAF164EB9B1D8886F44E2A] action run (skipped due to not_if)
+127.0.0.1          * file[/etc/apt/sources.list.d/openjdk-r-ppa.list] action create
+127.0.0.1            [32m- create new file /etc/apt/sources.list.d/openjdk-r-ppa.list[0m
+127.0.0.1            [32m- update content in file /etc/apt/sources.list.d/openjdk-r-ppa.list from none to 012ef3[0m
+127.0.0.1            [37m--- /etc/apt/sources.list.d/openjdk-r-ppa.list	2016-01-31 19:34:01.951498651 +0000[0m
+127.0.0.1            [37m+++ /etc/apt/sources.list.d/.openjdk-r-ppa.list20160131-5575-71mpe9	2016-01-31 19:34:01.951498651 +0000[0m
+127.0.0.1            [37m@@ -1 +1,2 @@[0m
+127.0.0.1            [37m+deb     "http://ppa.launchpad.net/openjdk-r/ppa/ubuntu" trusty main[0m
+127.0.0.1            [32m- change mode from '' to '0644'[0m
+127.0.0.1            [32m- change owner from '' to 'root'[0m
+127.0.0.1            [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m    * file[/var/lib/apt/periodic/update-success-stamp] action delete
+127.0.0.1            [32m- delete file /var/lib/apt/periodic/update-success-stamp[0m
+127.0.0.1      [0m    * execute[apt-get update] action run
+127.0.0.1            [32m- execute apt-get update -o Dir::Etc::sourcelist='sources.list.d/openjdk-r-ppa.list' -o Dir::Etc::sourceparts='-' -o APT::Get::List-Cleanup='0'[0m
+127.0.0.1      [0m    * execute[apt-cache gencaches] action run
+127.0.0.1            [32m- execute apt-cache gencaches[0m
+127.0.0.1      [0m  
+127.0.0.1      [0m  * apt_package[openjdk-6-jdk] action install
+127.0.0.1          [32m- install version 6b37-1.13.9-1ubuntu0.14.04.1 of package openjdk-6-jdk[0m
+127.0.0.1      [0m  * apt_package[openjdk-6-jre-headless] action install (up to date)
+127.0.0.1        * java_alternatives[set-java-alternatives] action set
+127.0.0.1          [32m- Add alternative for apt[0m
+127.0.0.1          [32m- Add alternative for java[0m
+127.0.0.1          [32m- Set alternative for java[0m
+127.0.0.1          [32m- Add alternative for javaws[0m
+127.0.0.1          [32m- Set alternative for javaws[0m
+127.0.0.1          [32m- Add alternative for keytool[0m
+127.0.0.1          [32m- Set alternative for keytool[0m
+127.0.0.1          [32m- Add alternative for orbd[0m
+127.0.0.1          [32m- Set alternative for orbd[0m
+127.0.0.1          [32m- Add alternative for pack200[0m
+127.0.0.1          [32m- Set alternative for pack200[0m
+127.0.0.1          [32m- Add alternative for policytool[0m
+127.0.0.1          [32m- Set alternative for policytool[0m
+127.0.0.1          [32m- Add alternative for rmid[0m
+127.0.0.1          [32m- Set alternative for rmid[0m
+127.0.0.1          [32m- Add alternative for rmiregistry[0m
+127.0.0.1          [32m- Set alternative for rmiregistry[0m
+127.0.0.1          [32m- Add alternative for servertool[0m
+127.0.0.1          [32m- Set alternative for servertool[0m
+127.0.0.1          [32m- Add alternative for tnameserv[0m
+127.0.0.1          [32m- Set alternative for tnameserv[0m
+127.0.0.1          [32m- Add alternative for unpack200[0m
+127.0.0.1          [32m- Set alternative for unpack200[0m
+127.0.0.1      [0mRecipe: java::default_java_symlink[0m
+127.0.0.1        * link[/usr/lib/jvm/default-java] action create
+127.0.0.1          [32m- create symlink at /usr/lib/jvm/default-java to /usr/lib/jvm/java-6-openjdk-amd64[0m
+127.0.0.1      [0mRecipe: java::set_java_home[0m
+127.0.0.1        * ruby_block[set-env-java-home] action run
+127.0.0.1          [32m- execute the ruby block set-env-java-home[0m
+127.0.0.1      [0m  * directory[/etc/profile.d] action create (up to date)
+127.0.0.1        * file[/etc/profile.d/jdk.sh] action create
+127.0.0.1          [32m- create new file /etc/profile.d/jdk.sh[0m
+127.0.0.1          [32m- update content in file /etc/profile.d/jdk.sh from none to 37eba7[0m
+127.0.0.1          [37m--- /etc/profile.d/jdk.sh	2016-01-31 19:39:15.412164714 +0000[0m
+127.0.0.1          [37m+++ /etc/profile.d/.jdk.sh20160131-5575-rn59dr	2016-01-31 19:39:15.412164714 +0000[0m
+127.0.0.1          [37m@@ -1 +1,2 @@[0m
+127.0.0.1          [37m+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64[0m
+127.0.0.1          [32m- change mode from '' to '0755'[0m
+127.0.0.1      [0mRecipe: jboss6::default[0m
+127.0.0.1        * user[jboss] action create
+127.0.0.1          [32m- create user jboss[0m
+127.0.0.1      [0m  * group[jboss] action modify (up to date)
+127.0.0.1        * directory[/usr/local/jboss] action create
+127.0.0.1          [32m- create new directory /usr/local/jboss[0m
+127.0.0.1          [32m- change mode from '' to '0755'[0m
+127.0.0.1          [32m- change owner from '' to 'jboss'[0m
+127.0.0.1          [32m- change group from '' to 'jboss'[0m
+127.0.0.1      [0m  * bash[put_files] action run
+127.0.0.1          [32m- execute "bash"  "/tmp/chef-script20160131-5575-g088cm"[0m
+127.0.0.1      [0m  * directory[/usr/local/jboss/default] action create
+127.0.0.1          [32m- change mode from '0775' to '0755'[0m
+127.0.0.1      [0m  * template[/etc/init.d/jboss] action create
+127.0.0.1          [32m- create new file /etc/init.d/jboss[0m
+127.0.0.1          [32m- update content in file /etc/init.d/jboss from none to bfdb11[0m
+127.0.0.1          [37m--- /etc/init.d/jboss	2016-01-31 19:41:04.038455586 +0000[0m
+127.0.0.1          [37m+++ /etc/init.d/.jboss20160131-5575-1y5s7wm	2016-01-31 19:41:04.038455586 +0000[0m
+127.0.0.1          [37m@@ -1 +1,100 @@[0m
+127.0.0.1          [37m+#!/bin/sh[0m
+127.0.0.1          [37m+#[0m
+127.0.0.1          [37m+# $Id: jboss_init_redhat.sh 81068 2008-11-14 15:14:35Z dimitris@jboss.org $[0m
+127.0.0.1          [37m+#[0m
+127.0.0.1          [37m+# JBoss Control Script[0m
+127.0.0.1          [37m+#[0m
+127.0.0.1          [37m+# To use this script run it as root - it will switch to the specified user[0m
+127.0.0.1          [37m+#[0m
+127.0.0.1          [37m+# Here is a little (and extremely primitive) startup/shutdown script[0m
+127.0.0.1          [37m+# for RedHat systems. It assumes that JBoss lives in /usr/local/jboss,[0m
+127.0.0.1          [37m+# it's run by user 'jboss' and JDK binaries are in /usr/local/jdk/bin.[0m
+127.0.0.1          [37m+# All this can be changed in the script itself. [0m
+127.0.0.1          [37m+#[0m
+127.0.0.1          [37m+# Either modify this script for your requirements or just ensure that[0m
+127.0.0.1          [37m+# the following variables are set correctly before calling the script.[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+#define where jboss is - this is the directory containing directories log, bin, conf etc[0m
+127.0.0.1          [37m+JBOSS_HOME=${JBOSS_HOME:-"/usr/local/jboss/default"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+#define the user under which jboss will run, or use 'RUNASIS' to run as the current user[0m
+127.0.0.1          [37m+JBOSS_USER=${JBOSS_USER:-"jboss"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+#make sure java is in your path[0m
+127.0.0.1          [37m+JAVAPTH=${JAVAPTH:-"$JAVA_HOME/bin/java"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+#configuration to use, usually one of 'minimal', 'default', 'all'[0m
+127.0.0.1          [37m+JBOSS_CONF=${JBOSS_CONF:-"default"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+JBOSS_HOST=${JBOSS_HOST:-"0.0.0.0"}[0m
+127.0.0.1          [37m+#if JBOSS_HOST specified, use -b to bind jboss services to that address[0m
+127.0.0.1          [37m+JBOSS_BIND_ADDR=${JBOSS_HOST:+"-b $JBOSS_HOST"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+#define the classpath for the shutdown class[0m
+127.0.0.1          [37m+JBOSSCP=${JBOSSCP:-"$JBOSS_HOME/bin/shutdown.jar:$JBOSS_HOME/client/jnet.jar"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+#define the script to use to start jboss[0m
+127.0.0.1          [37m+JBOSSSH=${JBOSSSH:-"$JBOSS_HOME/bin/run.sh -c $JBOSS_CONF $JBOSS_BIND_ADDR"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+if [ "$JBOSS_USER" = "RUNASIS" ]; then[0m
+127.0.0.1          [37m+  SUBIT=""[0m
+127.0.0.1          [37m+else[0m
+127.0.0.1          [37m+  SUBIT="su - $JBOSS_USER -c "[0m
+127.0.0.1          [37m+fi[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+if [ -n "$JBOSS_CONSOLE" -a ! -d "$JBOSS_CONSOLE" ]; then[0m
+127.0.0.1          [37m+  # ensure the file exists[0m
+127.0.0.1          [37m+  touch $JBOSS_CONSOLE[0m
+127.0.0.1          [37m+  if [ ! -z "$SUBIT" ]; then[0m
+127.0.0.1          [37m+    chown $JBOSS_USER $JBOSS_CONSOLE[0m
+127.0.0.1          [37m+  fi [0m
+127.0.0.1          [37m+fi[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+if [ -n "$JBOSS_CONSOLE" -a ! -f "$JBOSS_CONSOLE" ]; then[0m
+127.0.0.1          [37m+  echo "WARNING: location for saving console log invalid: $JBOSS_CONSOLE"[0m
+127.0.0.1          [37m+  echo "WARNING: ignoring it and using /dev/null"[0m
+127.0.0.1          [37m+  JBOSS_CONSOLE="/dev/null"[0m
+127.0.0.1          [37m+fi[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+#define what will be done with the console log[0m
+127.0.0.1          [37m+JBOSS_CONSOLE=${JBOSS_CONSOLE:-"/dev/null"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+JBOSS_CMD_START="cd $JBOSS_HOME/bin; $JBOSSSH"[0m
+127.0.0.1          [37m+JBOSS_CMD_STOP=${JBOSS_CMD_STOP:-"java -classpath $JBOSSCP org.jboss.Shutdown --shutdown"}[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+if [ -z "`echo $PATH | grep $JAVAPTH`" ]; then[0m
+127.0.0.1          [37m+  export PATH=$PATH:$JAVAPTH[0m
+127.0.0.1          [37m+fi[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+if [ ! -d "$JBOSS_HOME" ]; then[0m
+127.0.0.1          [37m+  echo JBOSS_HOME does not exist as a valid directory : $JBOSS_HOME[0m
+127.0.0.1          [37m+  exit 1[0m
+127.0.0.1          [37m+fi[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+echo JBOSS_CMD_START = $JBOSS_CMD_START[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+case "$1" in[0m
+127.0.0.1          [37m+start)[0m
+127.0.0.1          [37m+    cd $JBOSS_HOME/bin[0m
+127.0.0.1          [37m+    if [ -z "$SUBIT" ]; then[0m
+127.0.0.1          [37m+        eval $JBOSS_CMD_START >${JBOSS_CONSOLE} 2>&1 &[0m
+127.0.0.1          [37m+    else[0m
+127.0.0.1          [37m+        $SUBIT "$JBOSS_CMD_START >${JBOSS_CONSOLE} 2>&1 &" [0m
+127.0.0.1          [37m+    fi[0m
+127.0.0.1          [37m+    ;;[0m
+127.0.0.1          [37m+stop)[0m
+127.0.0.1          [37m+    if [ -z "$SUBIT" ]; then[0m
+127.0.0.1          [37m+        $JBOSS_CMD_STOP[0m
+127.0.0.1          [37m+    else[0m
+127.0.0.1          [37m+        $SUBIT "$JBOSS_CMD_STOP"[0m
+127.0.0.1          [37m+    fi [0m
+127.0.0.1          [37m+    ;;[0m
+127.0.0.1          [37m+restart)[0m
+127.0.0.1          [37m+    $0 stop[0m
+127.0.0.1          [37m+    $0 start[0m
+127.0.0.1          [37m+    ;;[0m
+127.0.0.1          [37m+*)[0m
+127.0.0.1          [37m+    echo "usage: $0 (start|stop|restart|help)"[0m
+127.0.0.1          [37m+esac[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [32m- change mode from '' to '0755'[0m
+127.0.0.1          [32m- change owner from '' to 'root'[0m
+127.0.0.1          [32m- change group from '' to 'root'[0m
+127.0.0.1      [0m  * service[jboss] action enable
+127.0.0.1          [32m- enable service service[jboss][0m
+127.0.0.1      [0m  * service[jboss] action start
+127.0.0.1          [32m- start service service[jboss][0m
+127.0.0.1      [0m  * template[/etc/sudoers.d/jboss] action create
+127.0.0.1          [32m- create new file /etc/sudoers.d/jboss[0m
+127.0.0.1          [32m- update content in file /etc/sudoers.d/jboss from none to 12b26f[0m
+127.0.0.1          [37m--- /etc/sudoers.d/jboss	2016-01-31 19:41:05.643257659 +0000[0m
+127.0.0.1          [37m+++ /etc/sudoers.d/.jboss20160131-5575-lt1m6y	2016-01-31 19:41:05.643257659 +0000[0m
+127.0.0.1          [37m@@ -1 +1,5 @@[0m
+127.0.0.1          [37m+# This file is generated by Chef, all manual changes will be overriden[0m
+127.0.0.1          [37m+[0m
+127.0.0.1          [37m+%jboss     ALL=(jboss) NOPASSWD:ALL[0m
+127.0.0.1          [37m+%jboss     ALL=(root)  NOPASSWD: /sbin/service jboss [a-zA-Z]*[0m
+127.0.0.1          [32m- change mode from '' to '0440'[0m
+127.0.0.1          [32m- change owner from '' to 'root'[0m
+127.0.0.1          [32m- change group from '' to 'root'[0m
+127.0.0.1      [0mRecipe: xml_guestbookapp::default[0m
+127.0.0.1        * execute[cp xml file to jboss conf dir] action run
+127.0.0.1          [32m- execute sudo cp /vagrant/guestbookapp/guestbookapp.war /usr/local/jboss/jboss-6.0.0.Final/server/default/deploy/ && sudo cp /vagrant/guestbookapp/guestbookapp.xml /usr/local/jboss/jboss-6.0.0.Final/server/default/conf/ [0m
+127.0.0.1      [0m[0m
+127.0.0.1      Running handlers:[0m
+127.0.0.1      Running handlers complete
+127.0.0.1      [0mChef Client finished, 20/38 resources updated in 07 minutes 19 seconds[0m
